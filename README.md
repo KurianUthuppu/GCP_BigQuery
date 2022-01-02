@@ -82,6 +82,11 @@ FROM
   `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
 ```
 #### Delete data from the data-table
+- Use Delete function
+```
+DELETE `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
+WHERE Year < '2000'
+```
 #### Using Operator to execute multiple conditions
 #### Formatting columns
 #### Get data from multiple tables using various joins
