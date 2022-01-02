@@ -62,3 +62,29 @@ WHERE RATING >= 9
 GROUP BY movie_name_, Year, RATING
 ORDER BY RATING DESC 
 ```
+#### Useful aggregation functions
+```
+- COUNT(DISTINCT <Column-Name> / COUNT(<Column-Name>)
+- MIN/MAX(<Column-Name>)
+- SUM/AVG(<Column-Name>)
+- ROUND(SUM(<Column-Name>),<No. of decimal digits>)
+```
+Example for an aggregate query
+```
+Example 1:
+SELECT COUNT(DISTINCT Year)
+FROM
+  `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
+
+Example 2:
+SELECT ROUND(AVG(RATING),2)
+FROM
+  `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
+```
+#### Delete data from the data-table
+#### Using Operator to execute multiple conditions
+#### Formatting columns
+#### Get data from multiple tables using various joins
+#### Arrays and Structures
+#### Find/Fill null cells
+#### Define functions
