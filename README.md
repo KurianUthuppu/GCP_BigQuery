@@ -11,7 +11,9 @@ _Very useful to analyze datasets that are large enough (Circa 1 lakh+ cells) to 
 - GCP platform login - https://cloud.google.com/?authuser=1 ($300 credit for free usage and testing for the first 6 months)
 - Helpful Google documentation - https://cloud.google.com/bigquery/docs?authuser=1
 - Useful startup video - https://youtu.be/JLXLCv5nUCE
-- Public dataset - https://www.kaggle.com/ramjasmaurya/top-250s-in-imdb
+- Public dataset:
+  - https://www.kaggle.com/ramjasmaurya/top-250s-in-imdb
+  - https://www.kaggle.com/axeltorbenson/top-4000-movies
 
 ### Setup
 - Login to the GCP console using your Google account login
@@ -71,11 +73,13 @@ ORDER BY RATING DESC
 ```
 Example for an aggregate query
 ```
+# Count the unique years in the datatable
 Example 1:
 SELECT COUNT(DISTINCT Year)
 FROM
   `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
 
+# Find the average rating of the movies with accuarcy of 2 decimal points
 Example 2:
 SELECT ROUND(AVG(RATING),2)
 FROM
@@ -84,12 +88,38 @@ FROM
 #### Delete data from the data-table
 - Use Delete function
 ```
+# Delete rows from the table whose release year is less than 2000
 DELETE `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
 WHERE Year < '2000'
 ```
-#### Using Operator to execute multiple conditions
-#### Formatting columns
-#### Get data from multiple tables using various joins
+#### Using Regexp and operators
+- Regexp help extract substring that matches certain string types
+- Mostly used operators are 'AND','OR';
+Example shown below:
+```
+# Extract the year, duration from the respective string columns and find those with publishing year is after 2000, rating is greater than 8.5 and duration is greater than 100 mins
+SELECT pub_year, duration, RATING,
+FROM (
+    SELECT REGEXP_EXTRACT(Year, '[0-9]+[0-9]+[0-9]+[0-9]') AS pub_year, REGEXP_EXTRACT(runtime,'[0-9]+[0-9]' ) AS duration, RATING,
+    FROM `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
+)
+WHERE pub_year > '2000' AND RATING > 8.5 AND duration >= '100'
+ORDER BY RATING DESC 
+```
+#### Formatting Dates
+- Use Format_Date function to format dates
+Example below:
+```
+# Display date in Mon-Year format from original yyyy/mm/dd format along with the movie titles
+SELECT RD, Movie_Title,
+FROM (
+    SELECT Release_Date,Movie_Title,
+    FORMAT_DATE("%b-%Y", Release_Date) AS RD
+    FROM `crafty-sanctum-310406.practice_dataset.top_4000_movies`
+)
+```
+#### Get data from multiple tables using various joins and union
+
 #### Arrays and Structures
 #### Find/Fill null cells
 #### Define functions
