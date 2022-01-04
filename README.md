@@ -94,7 +94,7 @@ WHERE Year < '2000'
 ```
 #### Using Regexp and operators
 - Regexp help extract substring that matches certain string types
-- Mostly used operators are 'AND','OR';
+- Mostly used operators are 'AND','OR'  
 Example shown below:
 ```
 # Extract the year, duration from the respective string columns and find those with publishing year is after 2000, rating is greater than 8.5 and duration is greater than 100 mins
@@ -107,7 +107,7 @@ WHERE pub_year > '2000' AND RATING > 8.5 AND duration >= '100'
 ORDER BY RATING DESC 
 ```
 #### Formatting Dates
-- Use Format_Date function to format dates
+- Use Format_Date function to format dates  
 Example below:
 ```
 # Display date in Mon-Year format from original yyyy/mm/dd format along with the movie titles
@@ -118,8 +118,18 @@ FROM (
     FROM `crafty-sanctum-310406.practice_dataset.top_4000_movies`
 )
 ```
+#### Find/Fill null cells
+- Using ifnull function  
+Example below:
+```
+# Filling in the null cells in the metascore column with zero value and then finding average
+SELECT avg(IFNULL(metascore, 0))
+FROM `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
+
+```
 #### Get data from multiple tables using various joins and union
 
 #### Arrays and Structures
-#### Find/Fill null cells
+
+
 #### Define functions
