@@ -132,5 +132,18 @@ FROM `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
 
 
 #### Define functions
-SELECT IFNULL(REGEXP_EXTRACT(GROSS_COLLECTION, '[0-9.]+[0-9.]'),'0')
-FROM `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
+- Use create temp function  
+Example below:
+```
+# Create a function to extract numerical values from a string column and convert to float data-type
+CREATE TEMP FUNCTION num_extract(col_name ANY TYPE) AS (
+    CAST(REGEXP_EXTRACT(col_name, '[0-9.]+[0-9.]') AS FLOAT64)
+);
+
+# Find average of the respective extracted float columns
+SELECT
+    ROUND(AVG(num_extract(GROSS_COLLECTION)),2), 
+    ROUND(AVG(num_extract(Year)),0),
+FROM
+  `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
+```
