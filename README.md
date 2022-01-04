@@ -100,7 +100,7 @@ Example shown below:
 # Extract the year, duration from the respective string columns and find those with publishing year is after 2000, rating is greater than 8.5 and duration is greater than 100 mins
 SELECT pub_year, duration, RATING,
 FROM (
-    SELECT REGEXP_EXTRACT(Year, '[0-9]+[0-9]+[0-9]+[0-9]') AS pub_year, REGEXP_EXTRACT(runtime,'[0-9]+[0-9]' ) AS duration, RATING,
+    SELECT REGEXP_EXTRACT(Year, '[0-9]+[0-9]') AS pub_year, REGEXP_EXTRACT(runtime,'[0-9]+[0-9]' ) AS duration, RATING,
     FROM `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
 )
 WHERE pub_year > '2000' AND RATING > 8.5 AND duration >= '100'
@@ -125,7 +125,6 @@ Example below:
 # Filling in the null cells in the metascore column with zero value and then finding average
 SELECT avg(IFNULL(metascore, 0))
 FROM `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
-
 ```
 #### Get data from multiple tables using various joins and union
 
@@ -133,3 +132,5 @@ FROM `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
 
 
 #### Define functions
+SELECT IFNULL(REGEXP_EXTRACT(GROSS_COLLECTION, '[0-9.]+[0-9.]'),'0')
+FROM `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
