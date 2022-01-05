@@ -138,7 +138,7 @@ FROM `crafty-sanctum-310406.practice_dataset.top_4000_movies`
 ```
 A useful link to understand different types of table joins is given below:  
 - https://cloud.google.com/blog/topics/developers-practitioners/bigquery-explained-working-joins-nested-repeated-data  
-An example of INNER join (helps to get values that are present in the columns of both tables) is given below:
+An example of INNER join (helps to get values that are present in the columns of both tables) is given below:  
 Note: The With statement helps to get data from multiple tables in parallel
 ```
 # Get common movie titles in both datasets
