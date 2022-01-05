@@ -127,7 +127,15 @@ SELECT avg(IFNULL(metascore, 0))
 FROM `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
 ```
 #### Get data from multiple tables using various joins and union
-
+Example of union function is given below:
+```
+# Getting all 4000+250 movie title from 2 tables in a single table
+SELECT movie_name_ 
+FROM `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
+UNION ALL 
+SELECT Movie_Title
+FROM `crafty-sanctum-310406.practice_dataset.top_4000_movies`
+```
 #### Arrays and Structures
 
 
