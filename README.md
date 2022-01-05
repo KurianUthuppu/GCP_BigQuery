@@ -136,6 +136,32 @@ UNION ALL
 SELECT Movie_Title
 FROM `crafty-sanctum-310406.practice_dataset.top_4000_movies`
 ```
+A useful link to understand different types of table joins is given below:  
+- https://cloud.google.com/blog/topics/developers-practitioners/bigquery-explained-working-joins-nested-repeated-data  
+An example of INNER join (helps to get values that are present in the columns of both tables) is given below  
+'''
+WITH
+  title_250 AS (
+  SELECT
+    movie_name_
+  FROM
+    `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings` ),
+  title_4000 AS (
+  SELECT
+    Movie_Title
+  FROM
+    `crafty-sanctum-310406.practice_dataset.top_4000_movies` )
+SELECT
+  Movie_Title,
+  movie_name_,
+FROM
+  title_4000
+INNER JOIN
+  title_250
+ON
+  ( title_4000.Movie_Title = title_250.movie_name_ )
+
+'''
 #### Arrays and Structures
 
 
