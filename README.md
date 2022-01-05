@@ -162,7 +162,7 @@ INNER JOIN
   title_250
 ON
   ( title_4000.Movie_Title = title_250.movie_name_ )
-'''
+```
 #### Arrays and Structures
 
 
@@ -181,4 +181,5 @@ SELECT
     ROUND(AVG(num_extract(Year)),0),
 FROM
   `crafty-sanctum-310406.practice_dataset.imdb_movie_ratings`
-```
+  ```
+  
